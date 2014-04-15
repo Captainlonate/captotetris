@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta content='user-scalable=no, initial-scale=1, width=device-width' id='viewport' name='viewport'>
+	<meta name="apple-mobile-web-app-capable" content=yes>
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<title> Tetris </title>
+	<style>
+		html, body {
+			overflow: hidden;
+			background-image:url('img/wood.png');
+			width: 100%;
+			height: 100%;
+			margin:0;
+			padding:0;
+			border: 0;
+		}
+		#gameArea {
+		  position: absolute;
+		  left: 50%;
+		  top: 50%;		
+		}
+		@media all and (max-width: 2880px){
+	  		#bgImageDiv {
+				position: absolute;
+				margin: 0px;
+				padding: 0px;
+				top: 1%;
+				left: 22%;
+				width: 65%;
+				height: 97%;			
+			}
+			.stretch {
+				position: absolute;
+				width: 100%;
+				height: 100%;
+			}
+		}
+		@media all and (max-width: 640px) {
+		  	#bgImageDiv {
+				position: absolute;
+				margin: 0px;
+				padding: 0px;
+				top: 1%;
+				left: 6%;
+				width: 89%;
+				height: 97%;			
+			}
+			.stretch {
+				position: absolute;
+				width: 100%;
+				height: 100%;
+			}
+		}
+		
+		#mainCanvas {
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			border: 3px solid #FF8C00;
+			border-radius: 1%;
+			box-shadow: 10px 10px 5px #111;
+		}
+		#previewBlock {
+			display:inline-block;
+			width: 10%;
+			height: 10%;
+		}
+			#topPreview {
+				width: 100%;
+				height: 50%;
+				background-size: contain;
+				background-repeat: no-repeat;
+			}
+			#bottomPreview {
+				width: 100%;
+				height: 50%;
+				background-size: contain;
+				background-repeat: no-repeat;
+			}
+		#leftButton {
+			position: absolute;
+			display:inline-block;
+			background-size: contain;
+			background-repeat: no-repeat;
+			background-image: url('img/LeftButton.png');
+			width: 20%;
+			height: 20%;
+			z-index: 10;
+			bottom: -14%;
+			left: 2%;
+			margin: 0px;
+			padding: 0px;
+			border: none;
+		}
+		#leftButton:active {
+			background-image: url('img/LeftButtonClicked.png');
+		}
+		#rightButton {
+			position: absolute;
+			display:inline-block;
+			background-size: contain;
+			background-repeat: no-repeat;
+			background-image: url('img/RightButton.png');
+			width: 20%;
+			height: 20%;
+			z-index: 10;
+			bottom: -14%;
+			right: -20%;
+			margin: 0px;
+			padding: 0px;
+			border: none;
+		}
+		#rightButton:active {
+			background-image: url('img/RightButtonClicked.png');
+		}
+	</style>
+	<script src="js/utils.js"></script>
+
+	<script src="js/Game.js"></script>
+	<script src="js/ImageManager.js"></script>
+	<script src="js/SpriteSheet.js"></script>
+	<script src="js/EnemyRenderer.js"></script>
+	<script src="js/Enemy.js"></script>
+	<script src="js/Tower.js"></script>
+	<script src="js/UIWheel.js"></script>
+	<script src="js/WheelButton.js"></script>
+	<script src="js/Block.js"></script>
+	<script src="js/SoundPool.js"></script>
+
+
+	<script src="js/EventEmitter.js"></script>
+	<script src="js/input/InputHandlerBase.js"></script>
+	<script src="js/input/MouseInputHandler.js"></script>
+	<script src="js/input/TouchInputHandler.js"></script>
+	<script src="js/input/InputHandler.js"></script>
+
+	<script src="js/MapRenderer.js"></script>
+	<script src="js/LevelOne.js"></script>
+
+	<script src="js/jquery-1.9.0.min.js"></script>
+	
+	<script>
+		var canvas, game;	
+		function init() {			
+			canvas = document.getElementById("mainCanvas");
+			game = new Game(canvas);
+		}
+
+	</script>
+</head>
+
+<body onload="init()">
+	
+	<div id="bgImageDiv">
+		<img src="img/PirateShipBG2.png" class="stretch">
+	</div>
+
+	<div id="gameArea">
+		<div id="previewBlock">
+			<div id="topPreview"></div>
+			<div id="bottomPreview"></div>
+		</div>
+		<div id="leftButton"></div>
+		<div id="rightButton"></div>
+		<canvas id="mainCanvas"></canvas>
+	</div>
+
+	
+	
+</body>
+
+</html>
+
+
+
+
+
+
+
+

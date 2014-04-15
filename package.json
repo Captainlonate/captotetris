@@ -1,0 +1,15 @@
+{
+  "name": "tetrisApp",
+  "subdomain": "captainlonate1",
+  "scripts": {
+    "start": "app.js"
+  },
+  "version": "0.0.1-61",
+  "engines": {
+    "node": "0.8.x"
+  },
+  "dependencies": {
+    "websocket": "1.0.x",
+    "express": "3.0.x"
+  }
+}
