@@ -9,6 +9,7 @@ All custom art ( not that it's exactly brilliant lol )
 Here is a link to the latest playable version: <a href="http://captotetris.herokuapp.com/">Play!</a>
 
 <h1>Latest Version<h1>
+<img src="Lobby.png"></img>
 <img src="TetrisProgress4.png"></img>
 
 <h1>Some old version ( From new to old)<h1>

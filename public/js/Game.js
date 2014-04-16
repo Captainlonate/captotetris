@@ -173,44 +173,21 @@ _p.resizeMainCanvas = function() {
 	this._canvas.width = Math.floor(newWidth);
 	this._canvas.height = Math.floor(newHeight);
 
-	var numRowsToDivide = 7;
-	var numColsToDivide = 13;
-	if (window.devicePixelRatio == 2) {
-		var hidefCanvasWidth = this._canvas.width;
-        var hidefCanvasHeight = this._canvas.height;
-        var hidefCanvasCssWidth = hidefCanvasWidth;
-        var hidefCanvasCssHeight = hidefCanvasHeight;
-        this._canvas.width = (hidefCanvasWidth * window.devicePixelRatio);
-        this._canvas.height = (hidefCanvasHeight * window.devicePixelRatio);
-        this._canvas.style.width = hidefCanvasCssWidth;
-        this._canvas.style.height = hidefCanvasCssHeight;
-        //$(hidefCanvas).css('width', hidefCanvasCssWidth);
-        //$(hidefCanvas).css('height', hidefCanvasCssHeight);        
-		this._ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
-		numRowsToDivide = 14;
-		numColsToDivide = 26;
-	} 		
-
-	this._currentLevel && this._currentLevel.setViewportSize(this._canvas.width, this._canvas.height, numRowsToDivide, numColsToDivide);
-
-
-	// if (window.devicePixelRatio) {
-
-	// 	var hidefCanvas = $("#mainCanvas")[0];
-	// 	console.log(hidefCanvas);
- //        var hidefCanvasWidth = $(hidefCanvas).width();
- //        var hidefCanvasHeight = $(hidefCanvas).height();
- //        console.log(hidefCanvasHeight);
- //        var hidefCanvasCssWidth = hidefCanvasWidth;
- //        var hidefCanvasCssHeight = hidefCanvasHeight;
- //    	debugger;
- //        $(hidefCanvas).attr('width', hidefCanvasWidth * window.devicePixelRatio);
- //        $(hidefCanvas).attr('height', hidefCanvasHeight * window.devicePixelRatio);
- //        $(hidefCanvas).css('width', hidefCanvasCssWidth);
- //        $(hidefCanvas).css('height', hidefCanvasCssHeight);
- //        this._ctx.scale(window.devicePixelRatio, window.devicePixelRatio);             
- //      }
-
+	var numRowsToDivide = (7 * window.devicePixelRatio);
+	var numColsToDivide = (13 * window.devicePixelRatio);
+	
+	var hidefCanvasWidth = this._canvas.width;
+    var hidefCanvasHeight = this._canvas.height;
+    var hidefCanvasCssWidth = hidefCanvasWidth;
+    var hidefCanvasCssHeight = hidefCanvasHeight;
+    this._canvas.width = (hidefCanvasWidth * window.devicePixelRatio);
+    this._canvas.height = (hidefCanvasHeight * window.devicePixelRatio);
+    this._canvas.style.width = hidefCanvasCssWidth;
+    this._canvas.style.height = hidefCanvasCssHeight;       
+	this._ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+	
+	this._currentLevel && this._currentLevel.setViewportSize(this._canvas.width, this._canvas.height, 
+														 	 	numRowsToDivide, numColsToDivide);
 };
 
 
