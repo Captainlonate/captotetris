@@ -1,0 +1,242 @@
+@font-face {
+		    font-family: "Pirate";		    
+		    src: url("../fonts/PiecesOfEight.ttf");
+		}
+		body {
+			margin: 0px;
+			padding: 0px;
+			overflow-x: hidden;
+		}
+		ul {
+			list-style-type: none;
+		}
+		li {
+			width: 100%;
+			height: 30px;
+		}
+		.hidden {
+			display: none;
+		}
+		#contentDiv {
+			position: relative;			
+			width: 100%;
+			height: 580px;
+		}	
+		#WaterAndBelow {
+			position: relative;
+			width: 100%;
+			height: 40px;
+		}	
+		#waterPeak {
+			position: absolute;
+			width: 120%;
+			margin-right: 0px;
+			margin-left: 0px;
+			background-image: url('../img/LightWater.png');
+			background-size: contain;
+			background-repeat: repeat-x;
+			height: 38px;
+			left: -60px;
+			-webkit-transition:all 3s ease-in-out;
+		  	-moz-transition:all 3s ease-in-out;
+		  	-ms-transition:all 3s ease-in-out;
+		  	-o-transition:all 3s ease-in-out;
+		  	transition:all 3s ease-in-out;
+		}
+		#waterLow {
+			position: absolute;
+			width: 120%;
+			margin-right: 0px;
+			margin-left: 0px;
+			background-image: url('../img/DarkWater.png');
+			background-size: contain;
+			background-repeat: repeat-x;
+			height: 38px;
+			top: 20px;
+			left: -30px;
+			-webkit-transition:all 3s ease-in-out;
+		  	-moz-transition:all 3s ease-in-out;
+		  	-ms-transition:all 3s ease-in-out;
+		  	-o-transition:all 3s ease-in-out;
+		  	transition:all 3s ease-in-out;
+		  	z-index: 4;
+		}
+		#water {
+			position: relative;
+			height: 900px;			
+			background: -webkit-linear-gradient(#009fcb, #001b21); /* For Safari 5.1 to 6.0 */
+			background: -o-linear-gradient(#009fcb, #001b21); /* For Opera 11.1 to 12.0 */
+			background: -moz-linear-gradient(#009fcb, #001b21); /* For Firefox 3.6 to 15 */
+			background: linear-gradient(#009fcb, #001b21); /* Standard syntax */
+			z-index: 4;
+		}
+		#PalmTree {
+			position: absolute;
+			right: 5%;
+			top: 25px;
+			background-image: url('../img/PalmTree.png');
+			background-size: contain;
+			background-repeat: no-repeat;
+			width: 700px;
+			height: 648px;
+			z-index: 3;
+		}
+		#Sign {			
+			position: absolute;
+			font-family: "Pirate";
+			font-size: 40px;					
+			width: 501px;
+			height: 794px;
+			padding-top: 566px;	
+			padding-left: 30px;		
+			left: 30%;
+			top: -850px;			
+			background-repeat: no-repeat;	
+			background-size: contain;
+			background-image: url("../img/Sign.png");		
+			-webkit-transition:all 3s ease-in-out;
+		  	-moz-transition:all 3s ease-in-out;
+		  	-ms-transition:all 3s ease-in-out;
+		  	-o-transition:all 3s ease-in-out;
+		  	transition:all 3s ease-in-out;
+		  	-webkit-transform-origin: 50%  51%;
+		  	z-index: 5;
+		}
+			#PlayerNameBox {
+				width: 70%;
+				margin-left: 31px;
+				line-height: 40px;
+				font-size: 18px;
+				border: 0;
+				border-bottom: 1px solid white;
+				color: white;
+				background-color: transparent;
+			}
+			#inputBox>input:focus {
+				outline: 0;
+			}
+			a:visited, a:link, a:active {
+				text-decoration: none;
+				color: yellow;	
+			}
+			a:hover {
+				color: red;
+			}
+
+		#inputBox {
+			display: inline-block;
+			width: 300px;
+			height: 80px;
+			background-size: contain;
+			background-repeat: no-repeat;	
+			background-image: url("../img/textBoxBG.png");
+		}
+		#ChallengersContainer {
+			width: 400px;
+		}
+		#ConnectionStatusContainer {
+			background-color:green;
+			width: 300px;
+		}
+		#ChallengedByList {
+			background-color: pink;
+		}
+		#Challengers {
+			max-height: 80px;
+			font-size: 18px;
+			overflow-y: auto;
+			width: 200px;
+		}
+		#Challengers>li:hover {
+			font-size: 24px;
+			color: green;
+		}
+		#ConnectButton {
+			display: inline-block;
+		}
+		#ConnectionStatus {
+			color: yellow;
+			font-size: 16px;
+		}
+		#CloudOne {
+			position: absolute;
+			right: 25%;
+			top: 25px;
+			background-image: url('../img/Clouds.png');
+			background-size: contain;
+			background-repeat: no-repeat;
+			width: 222px;
+			height: 144px;
+			z-index: 1;
+		  	-webkit-animation: floatCloud 30s infinite; /* Safari and Chrome */
+		  	-webkit-animation-timing-function: linear;
+		  	animation:floatCloud 30s infinite; /* Safari and Chrome */	
+		  	animation-timing-function: linear;	  			  	
+		}
+		#SeaFloor {
+			position: relative;
+			width: 100%;
+			height: 80px;
+			margin-right: 0px;
+			margin-left: 0px;
+			background-color: #001b21;
+			background-image: url('../img/SeaFloor.png');
+			background-size: contain;
+			background-repeat: repeat-x;			
+			bottom: 0px;
+		  	z-index: 4;
+		}
+		#Chest {
+			position: relative;
+			left: 65%;
+			bottom: 70px;
+			background-image: url('../img/Chest.png');
+			background-size: contain;
+			background-repeat: no-repeat;
+			width: 214px;
+			height: 142px;
+			z-index: 5;
+		}
+		#ChallengeNotification {
+			margin-top: 13px;
+			color: #d8d805;
+		}
+		.dimLight{
+            display: none;
+            position: fixed;
+            top: 0%;
+            left: 0%;
+            width: 100%;
+            height: 100%;
+            background-color: black;
+            z-index:10;
+            -moz-opacity: 0.8;
+            opacity:.80;
+            filter: alpha(opacity=80);
+        }
+        .lightbox {
+            display: none;
+            font-family: "Pirate";
+			font-size: 40px;
+			padding-top: 0px;
+            position: fixed;
+            top: 25%;
+            left: 30%;
+            width: 50%;
+            max-width: 400px;
+            height: 35%;
+            padding: 16px;
+            border: 16px solid #5E3D01;
+            border-radius: 8%;
+            background-color: #7E6002;
+            z-index:11;
+            overflow: auto;
+        }
+		@keyframes floatCloud {
+		  from {    left: 2000px;	  }
+		  to {	    left: -500px;	  }
+		}
+		@-webkit-keyframes floatCloud {
+		  from {  left: 2000px;	  }
+		  to {    left: -500px;	  }
+		}

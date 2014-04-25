@@ -1,0 +1,108 @@
+html, body {
+			overflow: hidden;
+			background-image:url('../img/wood.png');
+			width: 100%;
+			height: 100%;
+			margin:0;
+			padding:0;
+			border: 0;
+		}
+		#gameArea {
+		  position: absolute;
+		  left: 50%;
+		  top: 50%;		
+		}
+		@media all and (max-width: 2880px){
+	  		#bgImageDiv {
+				position: absolute;
+				margin: 0px;
+				padding: 0px;
+				top: 1%;
+				left: 22%;
+				width: 65%;
+				height: 97%;			
+			}
+			.stretch {
+				position: absolute;
+				width: 100%;
+				height: 100%;
+			}
+		}
+		@media all and (max-width: 640px) {
+		  	#bgImageDiv {
+				position: absolute;
+				margin: 0px;
+				padding: 0px;
+				top: 1%;
+				left: 6%;
+				width: 89%;
+				height: 97%;			
+			}
+			.stretch {
+				position: absolute;
+				width: 100%;
+				height: 100%;
+			}
+		}
+		
+		#mainCanvas {
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			border: 3px solid #FF8C00;
+			border-radius: 1%;
+			box-shadow: 10px 10px 5px #111;
+		}
+		#previewBlock {
+			display:inline-block;
+			width: 10%;
+			height: 10%;
+		}
+			#topPreview {
+				width: 100%;
+				height: 50%;
+				background-size: contain;
+				background-repeat: no-repeat;
+			}
+			#bottomPreview {
+				width: 100%;
+				height: 50%;
+				background-size: contain;
+				background-repeat: no-repeat;
+			}
+		#leftButton {
+			position: absolute;
+			display:inline-block;
+			background-size: contain;
+			background-repeat: no-repeat;
+			background-image: url('../img/LeftButton.png');
+			width: 20%;
+			height: 20%;
+			z-index: 10;
+			bottom: -14%;
+			left: 2%;
+			margin: 0px;
+			padding: 0px;
+			border: none;
+		}
+		#leftButton:active {
+			background-image: url('../img/LeftButtonClicked.png');
+		}
+		#rightButton {
+			position: absolute;
+			display:inline-block;
+			background-size: contain;
+			background-repeat: no-repeat;
+			background-image: url('../img/RightButton.png');
+			width: 20%;
+			height: 20%;
+			z-index: 10;
+			bottom: -14%;
+			right: -20%;
+			margin: 0px;
+			padding: 0px;
+			border: none;
+		}
+		#rightButton:active {
+			background-image: url('../img/RightButtonClicked.png');
+		}

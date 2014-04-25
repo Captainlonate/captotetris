@@ -3,299 +3,81 @@
 <head>
 	<meta charset="utf-8" />
 	<meta content='user-scalable=no, initial-scale=1, width=device-width' id='viewport' name='viewport'>
-	<meta content="no-cache" />
-	<title> Tetris Lobby </title>	
-	<style>
-		@font-face {
-		    font-family: "Pirate";		    
-		    src: url("fonts/PiecesOfEight.ttf");
-		}
-		body {
-			margin: 0px;
-			padding: 0px;
-			overflow-x: hidden;
-		}
-		ul {
-			list-style-type: none;
-		}
-		#contentDiv {
-			position: relative;			
-			width: 100%;
-			height: 580px;
-		}	
-		#WaterAndBelow {
-			position: relative;
-			width: 100%;
-			height: 40px;
-		}	
-		#waterPeak {
-			position: absolute;
-			width: 120%;
-			margin-right: 0px;
-			margin-left: 0px;
-			background-image: url('img/LightWater.png');
-			background-size: contain;
-			background-repeat: repeat-x;
-			height: 38px;
-			left: -60px;
-			-webkit-transition:all 3s ease-in-out;
-		  	-moz-transition:all 3s ease-in-out;
-		  	-ms-transition:all 3s ease-in-out;
-		  	-o-transition:all 3s ease-in-out;
-		  	transition:all 3s ease-in-out;
-		}
-		#waterLow {
-			position: absolute;
-			width: 120%;
-			margin-right: 0px;
-			margin-left: 0px;
-			background-image: url('img/DarkWater.png');
-			background-size: contain;
-			background-repeat: repeat-x;
-			height: 38px;
-			top: 20px;
-			left: -30px;
-			-webkit-transition:all 3s ease-in-out;
-		  	-moz-transition:all 3s ease-in-out;
-		  	-ms-transition:all 3s ease-in-out;
-		  	-o-transition:all 3s ease-in-out;
-		  	transition:all 3s ease-in-out;
-		  	z-index: 4;
-		}
-		#water {
-			position: relative;
-			height: 900px;			
-			background: -webkit-linear-gradient(#009fcb, #001b21); /* For Safari 5.1 to 6.0 */
-			background: -o-linear-gradient(#009fcb, #001b21); /* For Opera 11.1 to 12.0 */
-			background: -moz-linear-gradient(#009fcb, #001b21); /* For Firefox 3.6 to 15 */
-			background: linear-gradient(#009fcb, #001b21); /* Standard syntax */
-			z-index: 4;
-		}
-		#PalmTree {
-			position: absolute;
-			right: 5%;
-			top: 25px;
-			background-image: url('img/PalmTree.png');
-			background-size: contain;
-			background-repeat: no-repeat;
-			width: 700px;
-			height: 648px;
-			z-index: 3;
-		}
-		#Sign {			
-			position: absolute;
-			font-family: "Pirate";
-			font-size: 40px;					
-			width: 501px;
-			height: 794px;
-			padding-top: 566px;	
-			padding-left: 30px;		
-			left: 30%;
-			top: -850px;			
-			background-repeat: no-repeat;	
-			background-size: contain;
-			background-image: url("img/Sign.png");		
-			-webkit-transition:all 3s ease-in-out;
-		  	-moz-transition:all 3s ease-in-out;
-		  	-ms-transition:all 3s ease-in-out;
-		  	-o-transition:all 3s ease-in-out;
-		  	transition:all 3s ease-in-out;
-		  	-webkit-transform-origin: 50%  51%;
-		  	z-index: 5;
-		}
-			#inputBox>input {
-				/*border: 1px solid yellow;*/
-				border: 0;
-				border-bottom: 1px solid white;
-				color: white;
-				background-color: transparent;
-			}
-			a:visited, a:link, a:active {
-				text-decoration: none;
-				color: yellow;	
-			}
-			a:hover {
-				color: red;
-			}
-		#inputBox {
-			width: 382px;
-			height: 104px;
-			background-repeat: no-repeat;	
-			background-image: url("img/textBoxBG.png");
-		}
-		#CloudOne {
-			position: absolute;
-			right: 25%;
-			top: 25px;
-			background-image: url('img/Clouds.png');
-			background-size: contain;
-			background-repeat: no-repeat;
-			width: 222px;
-			height: 144px;
-			z-index: 1;
-		  	-webkit-animation: floatCloud 30s infinite; /* Safari and Chrome */
-		  	-webkit-animation-timing-function: linear;
-		  	animation:floatCloud 30s infinite; /* Safari and Chrome */	
-		  	animation-timing-function: linear;	  			  	
-		}
-		#SeaFloor {
-			position: relative;
-			width: 100%;
-			height: 80px;
-			margin-right: 0px;
-			margin-left: 0px;
-			background-color: #001b21;
-			background-image: url('img/SeaFloor.png');
-			background-size: contain;
-			background-repeat: repeat-x;			
-			bottom: 0px;
-		  	z-index: 4;
-		}
-		#Chest {
-			position: relative;
-			left: 65%;
-			bottom: 70px;
-			background-image: url('img/Chest.png');
-			background-size: contain;
-			background-repeat: no-repeat;
-			width: 214px;
-			height: 142px;
-			z-index: 5;
-		}
-		
-		@keyframes floatCloud {
-		  from {    left: 2000px;	  }
-		  to {	    left: -500px;	  }
-		}
-		@-webkit-keyframes floatCloud {
-		  from {  left: 2000px;	  }
-		  to {    left: -500px;	  }
-		}
-	</style>
-	<script src="js/jquery-1.9.0.min.js"></script>
-	
-	<script>
-		var toggleInt = 1;
-		var waterPeak;
-		var waterLow;
-		var sign;
-		var rotateInterval;
-		var rotateToggle = false;
-		var transformPrefix;
-		function loaded() {	
-			// If its night time, then use night time colors for the sky, otherwise a sunny day			
-			var d = new Date();
-			if ( (d.getHours() >= 19) || (d.getHours() < 6) ) {
-				var gradientPrefix = getCssValuePrefix('backgroundImage', 'linear-gradient(#009fcb, #020000)');
-				document.body.style.backgroundColor = "#020000";
-			}
-			else {
-				var gradientPrefix = getCssValuePrefix('backgroundImage', 'linear-gradient(#ffff89, #00ccff)');
-				document.body.style.backgroundColor = "#00ccff";
-			}
-			// Which type of transformation do I have
-			transformPrefix = whichTransformPrefix();
-			// Handles on some elements that are going to undergo some animations
-			waterPeak = document.getElementById('waterPeak');
-			waterLow = document.getElementById('waterLow');
-			sign = document.getElementById('Sign');
-			// Kick off the water animation
-			changeBG();
-			// Make the water animation interval begin
-			var intervalID = window.setInterval(changeBG, 4000);
-			// Make the sign start doing its thing	
-			rotateInterval = window.setInterval(function() {				
-				if (rotateToggle == false) {
-					sign.style[transformPrefix] = "rotate(5deg) translate(0%, 650px)";
-					rotateToggle = true;
-				}
-				else {
-					sign.style[transformPrefix] = "rotate(-5deg) translate(0%, 650px)";
-					rotateToggle = false;
-				}
-				
-			}, 3000);	
-			//var nnum = (16+3);
-			//var li = document.createElement("li");
-			//var aTag = document.createElement('a');
-			//aTag.setAttribute("href", "game.html");
-			//aTag.innerHTML = "Play Single Player For Now";
-			//li.appendChild(aTag);
-			//document.getElementById("Challengers").appendChild(li);	
-
-		}
-
-		function changeBG() {
-			if (toggleInt == 1) {
-				toggleInt = 2;
-				waterPeak.style[transformPrefix] = "translate(30px, -5px)";
-				waterLow.style[transformPrefix] = "translate(-30px, -2px)";
-			}
-			else if(toggleInt == 2) {
-				toggleInt = 1;
-				waterPeak.style[transformPrefix] = "translate(-30px, 5px)";
-				waterLow.style[transformPrefix] = "translate(30px, 2px)";
-			}		
-		}
-
-		function whichTransformPrefix(){
-			var options = ['transform', 'MozTransform', 'WebkitTransform', 'msTransform', 'OTransform'];
-		    var root=document.documentElement 
-		    for (var i=0; i<options.length; i++){ 
-		        if (options[i] in root.style){ 
-		            return options[i] ;
-		        }
-		    }
-		}
-
-		function getCssValuePrefix(name, value) {
-		    var prefixes = ['', '-o-', '-ms-', '-moz-', '-webkit-'];
-		    // Create a temporary DOM object for testing
-		    var bg = document.getElementById("contentDiv");
-		    for (var i = 0; i < prefixes.length; i++) {
-		        // Attempt to set the style
-		        bg.style[name] = prefixes[i] + value;
-		        // Detect if the style was successfully set
-		        if (bg.style[name]) {
-		            return prefixes[i];
-		        }
-		        bg.style[name] = '';   // Reset the style
-		    }
-		}
+	<title> Lobby </title>	
+	<link rel="icon" type="image/png" href="img/favicon.png">
+	<link rel="stylesheet" type="text/css" href="css/lobby.css" />
+	<script type="text/javascript" src="js/GameLobby.js"></script>
+	<script type="text/javascript" src="js/WebsocketConnection.js"></script>
+	<script type="text/javascript">
+	function loaded() {
+		var GL = new GameLobby();
+	}
 	</script>
 </head>
 
 <body onload="loaded()">
-	
+	<!-- Provides spacing for the sky and content -->
 	<div id="contentDiv"></div>
-
+	<!-- Handles the movement of the waves -->
 	<div id="WaterAndBelow">
 		<div id="waterPeak"></div>
 		<div id="waterLow"></div>		
 	</div>	
-
+	<!-- Contains all the deep blue see and provides some spacing until the sea floor -->
 	<div id="water"></div>
-
+	<!-- The Sea Floor, will contain images and interactive stuff -->
 	<div id="SeaFloor">
-		<div id="Chest"> 
-		</div>
+		<div id="Chest"></div>
 	</div>
-	
+	<!-- The Island Image -->
 	<div id="PalmTree"></div>
-
+	<!-- The swinging Sign - Provides information about starting a new game -->
 	<div id="Sign">
 		<div id="inputBox">
-			<input type="text"></input>
+			<input id="PlayerNameBox" type="text">
 		</div>		
-		<input type="button" value="Challenge"></input>
-		<br />
-		<br />
-		<a href="game.html">Play Single Player For Now</a>
-		<ul id="Challengers">
-		</ul>
+		<input type="button" id="ConnectButton" value="Connect">
+		<br>
+		<a href="singlePlayer.html">Play Single Player For Now</a>
+		<div id="ChallengersContainer">
+			<ul id="Challengers">			
+			</ul>	
+		</div>	
+		<div id="ChallengedByList">
+		</div>	
+		<div id="ConnectionStatusContainer">
+			<p id="ConnectionStatus">Not connected to server.</p>
+		</div>		
 	</div>
-
+	<!-- A cloud that just floads around on a keyframe -->
 	<div id="CloudOne"></div>	
+
+
+
+
+
+
+
+
+	<!-- Templates and other hidden elements -->
+
+    <div id="lightboxDiv" class="lightbox">
+    	<p id="ChallengeNotification"></p>
+    	<input id="AcceptButton" type="button" value="Play!">
+    	<input id="DeclineButton" type="button" value="Flee!">
+    </div>        
+    <div id="dimDiv" class="dimLight"></div>
+
+	<ul id="templateUL" class="hidden">	
+		<li id="templateLI">
+			<span style="background-color: orange">
+				Nathan
+			</span>
+			<span style="background-color: teal">
+				Roger
+			</span>
+		</li>		
+	</ul>
 
 </body>
 

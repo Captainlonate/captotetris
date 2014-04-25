@@ -1,5 +1,5 @@
 
-function Game(canvas) {	
+function GameSP(canvas) {	
 
 	function powerConstructor(cnv) {
 		// This will hold the web socket connection
@@ -21,12 +21,7 @@ function Game(canvas) {
 			"YellowBreaker" : "img/yellowBreaker.png",
 			"BlueBreaker" : "img/blueBreaker.png",
 			"GreenBreaker" : "img/greenBreaker.png",
-			"RedBreaker" : "img/redBreaker.png",
-			"BlueGreyBlock" : "img/blueGreyPiece.png",
-			"RedGreyBlock" : "img/redGreyPiece.png",
-			"GreenGreyBlock" : "img/greenGreyPiece.png",
-			"YellowGreyBlock" : "img/yellowGreyPiece.png",
-			"CementBlock" : "img/cementPiece.png"
+			"RedBreaker" : "img/redBreaker.png"
 		}
 		var imageManager = new ImageManager();
 		    imageManager.load(images, onLoaded);
@@ -34,7 +29,7 @@ function Game(canvas) {
 		/** Called after all images are loaded */
 		function onLoaded() {
 			// Make the current Level
-			currentLevel = new LevelOne(ctx, canvas.width, canvas.height, imageManager);
+			currentLevel = new LevelOneSP(ctx, canvas.width, canvas.height, imageManager);
 			resizeMainCanvas();
 			// Begin the logic render loop
 			mainLoop(0);

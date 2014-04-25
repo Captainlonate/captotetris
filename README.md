@@ -16,10 +16,16 @@ Also, I wrote this in my canvas framework that I made.
 Here is a link to the latest playable version: <a href="http://captotetris.herokuapp.com/">Play!</a>
 
 <h1>Latest Version<h1>
-<img src="Lobby.png"></img>
-<img src="TetrisProgress5.png"></img>
+<img src="TetrisProgress11.png"></img>
+<img src="TetrisProgress7.png"></img>
 
 <h1>Some old version ( From new to old)<h1>
+<img src="TetrisProgress10.png"></img>
+<img src="TetrisProgress9.png"></img>
+<img src="TetrisProgress8.png"></img>
+<img src="TetrisProgress6.png"></img>
+<img src="Lobby.png"></img>
+<img src="TetrisProgress5.png"></img>
 <img src="TetrisProgress4.png"></img>
 <img src="TetrisProgress3.png"></img>
 <img src="TetrisProgress2.png"></img>

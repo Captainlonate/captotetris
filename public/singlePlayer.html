@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>	
+	<meta charset="utf-8" />
+	<meta content='user-scalable=no, initial-scale=1, width=device-width' id='viewport' name='viewport'>
+	<meta name="apple-mobile-web-app-capable" content=yes>
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<title> Single Player </title>
+	<link rel="icon" type="image/png" href="img/favicon.png">
+	<link rel="stylesheet" type="text/css" href="css/game.css" />
+	<script type="text/javascript" src="js/utils.js"></script>
+	<script type="text/javascript" src="js/GameSP.js"></script>
+	<script type="text/javascript" src="js/ImageManager.js"></script>
+	<script type="text/javascript" src="js/Block.js"></script>
+	<script type="text/javascript" src="js/SoundPool.js"></script>
+	<script type="text/javascript" src="js/LevelOneSP.js"></script>
+	<script type="text/javascript" src="js/WebsocketConnection.js"></script>
+	<script type="text/javascript">	
+		function init() {			
+			var canvas = document.getElementById("mainCanvas");
+			var game = new GameSP(canvas);
+		}
+	</script>
+</head>
+
+<body onload="init()">
+	
+	<div id="bgImageDiv">
+		<img src="img/PirateShipBG2.png" class="stretch" alt="Pirate Ship Background">
+	</div>
+
+	<div id="gameArea">
+		<div id="previewBlock">
+			<div id="topPreview" src="#"></div>
+			<div id="bottomPreview" src="#"></div>
+		</div>
+		<div id="leftButton"></div>
+		<div id="rightButton"></div>
+		<canvas id="mainCanvas"></canvas>
+	</div>
+
+	
+</body>
+
+</html>
+
+
+
+
+
+
+
+
